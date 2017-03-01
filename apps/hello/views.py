@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from apps.hello.models import Bio
 
-# Create your views here.
+
+def home(request):
+    aboutme = Bio.objects.first()
+    return render(request, 'main.html', {'aboutme': aboutme})
