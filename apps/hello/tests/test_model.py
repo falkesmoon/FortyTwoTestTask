@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from unittest import TestCase
-from apps.hello.models import Bio, Requests
+from apps.hello.models import Bio
 
 
 class BioModelTest(TestCase):
