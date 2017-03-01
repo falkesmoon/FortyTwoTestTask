@@ -3,6 +3,7 @@ from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from django.core.management import call_command
 
 
 class Migration(SchemaMigration):
@@ -20,6 +21,7 @@ class Migration(SchemaMigration):
             ('skype', self.gf('django.db.models.fields.CharField')(max_length=30, null=True, blank=True)),
             ('other_contacts', self.gf('django.db.models.fields.TextField')(max_length=300, null=True, blank=True)),
         ))
+        call_command("loaddata", "initial_data.json")
         db.send_create_signal(u'hello', ['Bio'])
 
 
