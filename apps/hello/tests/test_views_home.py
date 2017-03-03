@@ -15,16 +15,19 @@ class TestView(TestCase):
             skype='falkesmoon', other_contacts='vk.com/falkesmoon')
         person.save()
 
-    def test_profile_page(self):
-        """test view with 3 db entries"""
-        Bio.objects.create(name="qwerty", last_name="qwerty")
-        Bio.objects.create(name="zxcv", last_name="zxcv")
-        first_user = Bio.objects.first()
+    def test_main_page(self):
+        """ test view to render correct template and return code 200"""
         self.client = Client()
         self.url = reverse('home')
         response = self.client.get(self.url)
         self.assertTemplateUsed(response, 'main.html')
         self.assertEqual(response.status_code, 200)
+
+    def test_render_page(self):
+        """test view rendering correct data if db have 3 entries"""
+        Bio.objects.create(name="qwerty", last_name="qwerty")
+        Bio.objects.create(name="zxcv", last_name="zxcv")
+        first_user = Bio.objects.first()
         self.assertEqual(response.context['aboutme'], first_user)
         self.assertIn('Andrew', response.content)
         self.assertIn('Minikh', response.content)
@@ -34,3 +37,11 @@ class TestView(TestCase):
         self.assertIn('falkesmoon@42cc.co', response.content)
         self.assertIn('falkesmoon', response.content)
         self.assertIn('vk.com/falkesmoon', response.content)
+
+    def test_do_db_entries(self):
+        """ test view to show message if no db entries exist"""
+        Bio.objects.all().delete()
+        self.client = Client()
+        self.url = reverse('home')
+        response = self.client.get(self.url)
+        self.assertIn('No active user is found.', response.content)
