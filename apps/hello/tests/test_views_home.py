@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.test import TestCase, Client
+from django.test import TestCase
 from apps.hello.models import Bio
 from django.core.urlresolvers import reverse
 
@@ -14,11 +14,10 @@ class TestView(TestCase):
             email='falkesmoon@gmail.com', jabber='falkesmoon@42cc.co',
             skype='falkesmoon', other_contacts='vk.com/falkesmoon')
         person.save()
+        self.url = reverse('home')
 
     def test_main_page(self):
         """ test view to render correct template and return code 200"""
-        self.client = Client()
-        self.url = reverse('home')
         response = self.client.get(self.url)
         self.assertTemplateUsed(response, 'main.html')
         self.assertEqual(response.status_code, 200)
@@ -28,8 +27,6 @@ class TestView(TestCase):
         Bio.objects.create(name="qwerty", last_name="qwerty")
         Bio.objects.create(name="zxcv", last_name="zxcv")
         first_user = Bio.objects.first()
-        self.client = Client()
-        self.url = reverse('home')
         response = self.client.get(self.url)
         self.assertEqual(response.context['aboutme'], first_user)
         self.assertIn('Andrew', response.content)
@@ -43,8 +40,19 @@ class TestView(TestCase):
 
     def test_do_db_entries(self):
         """ test view to show message if no db entries exist"""
-        Bio.objects.all().delete()
-        self.client = Client()
-        self.url = reverse('home')
+        Bio.objects.all().delete()       
         response = self.client.get(self.url)
         self.assertIn('No active user is found.', response.content)
+
+    def test_cyrillic_db(self):
+        """ test view if db have cyrillic symbols """
+        Bio.objects.all().delete()
+        Bio.objects.create(
+            name='Андрій', last_name='Мініх',
+            bio='Студент, розробник')
+        first_user = Bio.objects.first()
+        response = self.client.get(self.url)
+        self.assertEqual(response.context['aboutme'], first_user)
+        self.assertIn('Андрій', response.content)
+        self.assertIn('Мініх', response.content)
+        self.assertIn('Студент, розробник', response.content)
