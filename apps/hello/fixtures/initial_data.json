@@ -1,0 +1,34 @@
+[
+  {
+    "pk": 1,
+    "model": "hello.bio",
+    "fields": {
+      "name": "Andrew",
+      "last_name": "Minikh",
+      "date_of_birth":"1998-04-10",
+      "bio":"Student, junior python developer",
+      "email":"falkesmoon@gmail.com",
+      "jabber":"falkesmoon@42cc.co",
+      "skype":"falkesmoon",
+      "other_contacts":"vk.com/falkesmoon"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "auth.user",
+    "fields": {
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "is_active": true,
+      "is_superuser": true,
+      "is_staff": true,
+      "last_login": "2016-11-20T18:27:54.473Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$12000$V37beua95hxc$yVZe/Diu20zP5QSWHvbuZRKYRcCccZgbADdIElZS3Ok=",
+      "email": "admin@admin.com",
+      "date_joined": "2016-11-20T18:27:36.058Z"
+    }
+  }
+]
