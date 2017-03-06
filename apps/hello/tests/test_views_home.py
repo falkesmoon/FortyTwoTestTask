@@ -40,7 +40,7 @@ class TestView(TestCase):
 
     def test_do_db_entries(self):
         """ test view to show message if no db entries exist"""
-        Bio.objects.all().delete()     
+        Bio.objects.all().delete()   
         response = self.client.get(self.url)
         self.assertIn('No active user is found.', response.content)
 
