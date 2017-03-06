@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block extra_head %}      
+{% block extra_head %}
+
+      <script type="text/javascript" src="{% static 'js/requests.js' %}"></script>
+      
 {% endblock %}
 {% block content %}
 <nav class="navbar navbar-default">
@@ -23,66 +26,14 @@
     </tr>
   </thead>
   <tbody id="MyBody">
+  {% for data in req_records %}
     <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
+      <td>{{ data.path }}</td>
+      <td>{{ data.req_time }}</td>
+      <td>{{ data.method }}</td>
+      <td>{{ data.status }}</td>
     </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
-    <tr>
-      <td>{{ http://127.0.0.1:8000/request_list/ }}</td>
-      <td>{{ 2017-03-06 15:41:40 }}</td>
-      <td>{{ GET }}</td>
-      <td>{{ 200 }}</td>
-    </tr>
+  {% endfor %}
   </tbody>
 </table>
 </div>
