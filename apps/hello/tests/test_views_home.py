@@ -23,7 +23,7 @@ class TestView(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_render_page(self):
-        """test view rendering correct data if db have 3 entries"""
+        """ test view rendering correct data if db have 3 entries"""
         Bio.objects.create(name="qwerty", last_name="qwerty")
         Bio.objects.create(name="zxcv", last_name="zxcv")
         first_user = Bio.objects.first()
@@ -40,7 +40,7 @@ class TestView(TestCase):
 
     def test_do_db_entries(self):
         """ test view to show message if no db entries exist"""
-        Bio.objects.all().delete()   
+        Bio.objects.all().delete()
         response = self.client.get(self.url)
         self.assertIn('No active user is found.', response.content)
 
