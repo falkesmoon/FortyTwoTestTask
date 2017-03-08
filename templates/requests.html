@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block extra_head %}
+
+      <script type="text/javascript" src="{% static 'js/requests.js' %}"></script>
+      
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1>42 Coffee Cups Test Assignment</h1>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<table class="table" id="MyTable">
+  <thead>
+    <tr>
+      <th>Path</th>
+      <th>Time</th>
+      <th>Method</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="MyBody">
+  {% for data in req_records %}
+    <tr>
+      <td>{{ data.path }}</td>
+      <td>{{ data.req_time }}</td>
+      <td>{{ data.method }}</td>
+      <td>{{ data.status }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

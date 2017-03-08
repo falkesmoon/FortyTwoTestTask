@@ -13,3 +13,13 @@ class Bio(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Requests(models.Model):
+    path = models.CharField(max_length=250, blank=True, null=True)
+    req_time = models.DateTimeField()
+    method = models.CharField(max_length=30, default='')
+    status = models.IntegerField(max_length=30, default='')
+
+    def __unicode__(self):
+        return unicode(self.path)
