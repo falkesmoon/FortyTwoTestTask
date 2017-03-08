@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.hello.models import Bio
+from apps.hello.models import Bio, Requests
 
 
 def home(request):
@@ -13,3 +13,11 @@ def request_list(request):
         return HttpResponse(req_records,  content_type="application/json")
     else:
         return render(request, 'requests.html', {'req_records': req_records})
+
+def request_list_ajax(request):
+    db_count = {}
+    if request.is_ajax():
+        db_count = {}
+        db_count['records'] = Requests.objects.count()
+        data = json.dumps(db_count)
+        return HttpResponse(data, content_type="application/json")
