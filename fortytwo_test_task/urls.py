@@ -11,4 +11,7 @@ urlpatterns = patterns(
     url(r'^$', views.home, name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^request_list/$', views.request_list, name='request_list'),
+        url(r'^request_list_ajax/$',
+        views.request_list_ajax,
+        name='request_list_ajax'),
 )
