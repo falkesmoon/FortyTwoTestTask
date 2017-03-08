@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 from apps.hello.models import Requests
 from django.core.urlresolvers import reverse
 from django.utils import timezone
+import ast
 
 
 class TestViewRequests(TestCase):
