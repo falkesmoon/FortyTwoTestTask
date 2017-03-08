@@ -32,3 +32,11 @@ class BioModelTest(TestCase):
         self.assertEqual(str(data_query.jabber), 'nickcave@42cc.co')
         self.assertEqual(str(data_query.skype), 'nickcave')
         self.assertEqual(str(data_query.other_contacts), 'vk.com/nickcave')
+
+
+class RequestModelTest(TestCase):
+    
+    def test_req_model(self):
+        """ testing model for returning right value """
+        req = Requests(path='/home/')
+        self.assertEqual(str(req), '/home/')
