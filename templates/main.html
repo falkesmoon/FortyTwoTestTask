@@ -12,20 +12,20 @@
   </nav>
 {% if aboutme %}
   <div class="container">
-		<div class="col-lg-6 left">
-			<p>Name: {{ aboutme.name }}</p>
-			<p>Last name: {{ aboutme.last_name }}</p>
-			<p>Date of birth: {{ aboutme.date_of_birth }}</p>
-			<p>Bio: {{ aboutme.bio|linebreaksbr }}</p>
-		</div>
-		<div class="col-lg-6">
-			<p>Contacts</p>
-			<p>Email: {{ aboutme.email }}</p>
-			<p>Jabber: {{ aboutme.jabber }}</p>
-			<p>Skype: {{ aboutme.skype }}</p>
-			<p>Other contacts: {{ aboutme.other_contacts|linebreaksbr }}</p>
-		</div>
-	</div>
+    <div class="col-lg-6 left">
+      <p>Name: {{ aboutme.name }}</p>
+      <p>Last name: {{ aboutme.last_name }}</p>
+      <p>Date of birth: {{ aboutme.date_of_birth }}</p>
+      <p>Bio: {{ aboutme.bio|linebreaksbr }}</p>
+    </div>
+    <div class="col-lg-6">
+      <p>Contacts</p>
+      <p>Email: {{ aboutme.email }}</p>
+      <p>Jabber: {{ aboutme.jabber }}</p>
+      <p>Skype: {{ aboutme.skype }}</p>
+      <p>Other contacts: {{ aboutme.other_contacts|linebreaksbr }}</p>
+    </div>
+  </div>
   <div class="footer">
     <a href="{% url "request_list" %}">Requests</a>
   </div
