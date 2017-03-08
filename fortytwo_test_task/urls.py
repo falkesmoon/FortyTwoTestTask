@@ -10,4 +10,5 @@ urlpatterns = patterns(
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', views.home, name='home'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^request_list/$', views.request_list, name='request_list'),
 )
