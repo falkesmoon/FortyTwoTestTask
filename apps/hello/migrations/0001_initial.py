@@ -3,12 +3,14 @@ from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from django.core.management import call_command
 
 
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Bio'
+        call_command('flush', '--no-input')
         db.create_table(u'hello_bio', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=30)),
