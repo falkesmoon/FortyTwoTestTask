@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'fortytwo_test_task.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db11.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'mydb.sqlite3'),
     }
 }
 
